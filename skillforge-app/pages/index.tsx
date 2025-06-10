@@ -1,12 +1,25 @@
 import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-const Home: React.FC = () => {
-    return (
-        <div>
-            <h1>Welcome to SkillForge!</h1>
-            <p>Your platform to learn and share skills.</p>
-        </div>
-    );
-};
+export default function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Bienvenidos a SkillForge</Text>
+      <Text>Esta es la pantalla principal de la aplicacion.</Text>
+    </View>
+  );
+}
 
-export default Home;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+});

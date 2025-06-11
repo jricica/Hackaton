@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% block title %}Registrarse{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+    background: #0a0a0a;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+}
+.container {
+    width: 370px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 0.3s;
+    animation: popIn 1s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes popIn {
+    0% { transform: scale(0.7) translateY(40px); opacity: 0;}
+    100% { transform: scale(1) translateY(0); opacity: 1;}
+}
+.form-content {
+    padding: 36px 32px 28px 32px;
+    transition: all 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    background: transparent;
+    z-index: 2;
+    animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.form-content .avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+.form-content .avatar svg {
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(0 2px 8px #1e3a8a33);
+    animation: avatarBounce 1.5s infinite alternate;
+}
+@keyframes avatarBounce {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-8px);}
+}
+.input-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+.input-group input {
+    width: 100%;
+    padding: 13px 44px 13px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    outline: none;
+    font-size: 1.05em;
+    background: #f7faff;
+    transition: border 0.2s, box-shadow 0.2s;
+    color: #222;
+}
+.input-group input:focus {
+    border: 2px solid #1e3a8a;
+    box-shadow: 0 0 0 2px #1e3a8a33;
+}
+.input-group .fa {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bdbdbd;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+.input-group input:focus + .fa {
+    color: #1e3a8a;
+}
+.input-group .toggle-password {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bdbdbd;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.input-group .toggle-password:hover {
+    color: #f7c948;
+}
+button[type="submit"] {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(90deg, #f7c948 0%, #1e3a8a 100%);
+    border: none;
+    border-radius: 12px;
+    color: #0a0a0a;
+    font-weight: bold;
+    font-size: 1.15em;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, color 0.2s;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px #1e3a8a22;
+    letter-spacing: 0.5px;
+}
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #1e3a8a 0%, #f7c948 100%);
+    color: #fff;
+    transform: scale(1.04);
+}
+.features {
+    margin-top: 24px;
+    text-align: center;
+    color: #222;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: fadeIn 1.5s;
+}
+.features i {
+    color: #1e3a8a;
+    margin-right: 7px;
+    animation: spin 3s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0);}
+    100% { transform: rotate(360deg);}
+}
+.extra-links {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.98em;
+}
+.extra-links a {
+    color: #1e3a8a;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.extra-links a:hover {
+    color: #f7c948;
+    text-decoration: underline;
+}
+.social-login {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+.social-login button {
+    border: none;
+    background: #f7c948;
+    color: #0a0a0a;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px #f7c94833;
+    cursor: pointer;
+}
+.social-login button:hover {
+    background: #1e3a8a;
+    color: #fff;
+    transform: scale(1.1) rotate(-8deg);
+}
+@media (max-width: 500px) {
+    .container { width: 98vw; }
+    .form-content { padding: 24px 8px 18px 8px;}
+}
+</style>
+
+<div class="container">
+    <div class="form-content">
+        <div class="avatar">
+            <!-- SVG Muñequito diferente -->
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="20" r="14" fill="#f7c948"/><rect x="18" y="36" width="28" height="16" rx="8" fill="#1e3a8a"/></svg>
+        </div>
+        <form action="{{ url_for('register') }}" method="post" autocomplete="off">
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Usuario" required>
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Correo electrónico" required>
+                <i class="fa fa-envelope"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Contraseña" required id="signup-password">
+                <i class="fa fa-lock"></i>
+                <span class="toggle-password" onclick="togglePassword('signup-password', this)">
+                    <i class="fa fa-eye"></i>
+                </span>
+            </div>
+            <button type="submit">Crear cuenta</button>
+        </form>
+        <div class="extra-links">
+            <span>¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesión</a></span>
+        </div>
+        <div class="social-login">
+            <button title="Google"><i class="fab fa-google"></i></button>
+            <button title="Facebook"><i class="fab fa-facebook-f"></i></button>
+            <button title="Twitter"><i class="fab fa-twitter"></i></button>
+        </div>
+        <div class="features">
+            <span><i class="fa fa-star"></i> ¡Regístrate y descubre más!</span>
+            <span><i class="fa fa-heart"></i> ¡Hecho para ti!</span>
+        </div>
+    </div>
+</div>
+
+<script>
+// Toggle password visibility
+function togglePassword(inputId, el) {
+    const input = document.getElementById(inputId);
+    const icon = el.querySelector('i');
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = "password";
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+</script>
+{% endblock %}

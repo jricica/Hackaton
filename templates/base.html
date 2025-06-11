@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Plataforma Educativa{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('overview') }}">Overview</a></li>
+        <li><a href="{{ url_for('profile') }}">Perfil</a></li>
+        <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
+    </ul>
+</nav>
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

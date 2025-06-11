@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background: #333;
+    color: white;
+    padding: 10px;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+.tasks, .calendar {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    gap: 5px;
+}
+.day {
+    border: 1px solid #999;
+    min-height: 80px;
+    padding: 5px;
+}
+.task {
+    background: #eee;
+    margin: 2px;
+    padding: 2px;
+    cursor: grab;
+}
